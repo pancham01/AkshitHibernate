@@ -10,15 +10,13 @@ import com.hibernate.entity.Employee;
 public class App {
 
 	public static void main(String[] args) {
-		Employee e = new Employee(2, "Nakul", "male", 94944);
+		Employee e = new Employee( "Nakul", "male", 94944);
 		
-		Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+		Configuration cfg = new Configuration().configure("hibernate.cfg1.xml");
 		SessionFactory sessionFactory = cfg.buildSessionFactory();
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
-		
 		session.save(e);
-		
 		tx.commit();
 		
 	}
