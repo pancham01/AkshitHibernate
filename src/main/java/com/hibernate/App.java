@@ -21,19 +21,25 @@ public class App {
 
 //		2nd
 //		SessionFactory sessionFactory = new Configuration().configure("hibernate.cfg1.xml").buildSessionFactory();
-		
+
 //		3rd
 //		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg1.xml").build();
 //		Metadata meta = new MetadataSources(ssr).getMetadataBuilder().build();
 //		SessionFactory sessionFactory = meta.buildSessionFactory();
-		
-//		4th
-		SessionFactory sessionFactory = new MetadataSources(new StandardServiceRegistryBuilder().configure("hibernate.cfg1.xml").build()).getMetadataBuilder().build().buildSessionFactory();
-	
-		Session session = sessionFactory.openSession();
-		session.save(e);
-		session.beginTransaction().commit();
 
+//		4th
+		SessionFactory sessionFactory = new MetadataSources(
+				new StandardServiceRegistryBuilder().configure("hibernate.cfg1.xml").build()).getMetadataBuilder()
+				.build().buildSessionFactory();
+
+		Session session = sessionFactory.openSession();
+
+		Employee employee = session.get(Employee.class, 12);
+
+		System.out.println(employee);
+//		session.persist(e);
+//		session.beginTransaction().commit();
+		sessionFactory.close();
 	}
 
 }
