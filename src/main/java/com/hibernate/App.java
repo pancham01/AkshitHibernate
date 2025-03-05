@@ -9,18 +9,15 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
+import com.hibernate.config.HibernateConfiguration;
 import com.hibernate.entity.Employee;
 
 public class App {
 
 	public static void main(String[] args) {
-		Employee e = new Employee("Nakul", "male", 94944);
-		SessionFactory sessionFactory = new MetadataSources(
-				new StandardServiceRegistryBuilder().configure("hibernate.cfg1.xml").build()).getMetadataBuilder()
-				.build().buildSessionFactory();
-
+		Employee e = new Employee("Utkarsh", "male", 94944);
+		SessionFactory sessionFactory = HibernateConfiguration.getSessionFactory();
 		Session session = sessionFactory.openSession();
-
 		session.persist(e);
 		session.beginTransaction().commit();
 		sessionFactory.close();
