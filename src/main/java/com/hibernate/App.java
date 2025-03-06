@@ -1,7 +1,5 @@
 package com.hibernate;
 
-import java.util.List;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -25,10 +23,10 @@ public class App {
 //		session.persist(e1);
 //		session.persist(e2);
 //		session.persist(e3);
-		session.persist(e4);
+//		session.persist(e4);
 //		session.persist(e5);
 //		session.persist(e6);
-		tx.commit();
+//		tx.commit();
 
 //		Query query = session.createQuery("from Employee",Employee.class);
 //		List list = query.list();
