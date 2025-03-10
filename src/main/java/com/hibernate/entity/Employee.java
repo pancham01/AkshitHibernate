@@ -1,38 +1,42 @@
 package com.hibernate.entity;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Transient;
+import jakarta.persistence.OneToOne;
 
-@Entity(name = "emp_table")
+@Entity
 public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Column(name = "user_name")
 	private String name;
 	private String gender;
 	private int salary;
-	
-	
-	@Transient
-	private String state;
+
+	@OneToOne
+	private Address address;
 
 	public Employee() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Employee(String name, String gender, int salary, String state) {
+	public Employee(String name, String gender, int salary, Address address) {
 		super();
-//		this.id = id;
 		this.name = name;
 		this.gender = gender;
 		this.salary = salary;
-		this.state = state;
+		this.address = address;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	public int getId() {
@@ -71,5 +75,7 @@ public class Employee {
 	public String toString() {
 		return "Employee [id=" + id + ", name=" + name + ", gender=" + gender + ", salary=" + salary + "]";
 	}
+
+	
 
 }
