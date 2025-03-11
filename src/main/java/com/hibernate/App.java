@@ -18,25 +18,22 @@ public class App {
 		e.setGender("male");
 		e.setSalary(98754);
 		e.setAddress(ad1);
-		
+
 //		injecting employee to the address
 		ad1.setEmployee(e);
-		
-		session.persist(ad1);
+
 		session.persist(e);
 		session.beginTransaction().commit();
 
 	}
 
 	private static void fetchEmployee(Session session) {
-		Employee employee = session.get(Employee.class, 2);
+		Employee employee = session.get(Employee.class, 1);
 
 		System.out.println(employee);
 		System.out.println(employee.getAddress());
 	}
-	
-	
-	
+
 	private static void fetchAddress(Session session) {
 		Address address = session.get(Address.class, 1);
 
@@ -46,18 +43,17 @@ public class App {
 
 	public static void main(String[] args) {
 
-
 		SessionFactory sessionFactory = HibernateConfiguration.getSessionFactory();
 		Session session = sessionFactory.openSession();
 
-//		save(session);
-		
-		fetchEmployee(session);
+		save(session);
+
+//		fetchEmployee(session);
 		
 		System.out.println("<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>");
-		
-		fetchAddress(session);
-		
+//		
+//		fetchAddress(session);
+//		
 		sessionFactory.close();
 
 	}

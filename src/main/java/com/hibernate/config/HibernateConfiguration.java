@@ -5,6 +5,7 @@ import java.util.Properties;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 
 public class HibernateConfiguration {
@@ -15,12 +16,13 @@ public class HibernateConfiguration {
 		ps.put(Environment.JAKARTA_JDBC_URL, "jdbc:mysql://localhost:3306/sameer");
 		ps.put(Environment.JAKARTA_JDBC_USER, "root");
 		ps.put(Environment.JAKARTA_JDBC_PASSWORD, "root");
-		ps.put(Environment.HBM2DDL_AUTO, "update");
+		ps.put(Environment.HBM2DDL_AUTO, "create");
 		ps.put(Environment.SHOW_SQL, "true");
 		ps.put(Environment.FORMAT_SQL, "true");
 //		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().applySettings(ps).build();
 //		MetadataSources  metadataSources = new MetadataSources(ssr).addAnnotatedClass(com.hibernate.entity.Employee.class);
 //		SessionFactory sessionFactory = metadataSources.getMetadataBuilder().build().buildSessionFactory();
+		
 		return new MetadataSources(new StandardServiceRegistryBuilder().applySettings(ps).build())
 				.addAnnotatedClasses(com.hibernate.entity.Employee.class, com.hibernate.entity.Address.class)
 				.getMetadataBuilder().build().buildSessionFactory();
